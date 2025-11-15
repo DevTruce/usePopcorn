@@ -1,11 +1,15 @@
-import "./App.css";
+import { useState } from "react";
 
-function App() {
+import NavBar from "./components/Navbar";
+import Search from "./components/Search";
+import "./index.css";
+
+export default function App() {
+  const [query, setQuery] = useState("");
+
   return (
-    <div className="App">
-      <p>nothing here</p>
-    </div>
+    <NavBar>
+      <Search query={query} setQuery={setQuery} />
+    </NavBar>
   );
 }
-
-export default App;
