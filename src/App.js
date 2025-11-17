@@ -12,6 +12,7 @@ import Search from "./components/Search";
 import WatchedMoviesList from "./components/WatchedMovieList";
 import WatchedSummary from "./components/WatchedSummary";
 
+import { useLocalStorageState } from "./components/useLocalStorageState";
 import { useMovies } from "./components/useMovies";
 
 import "./index.css";
@@ -20,7 +21,7 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const { movies, isLoading, error } = useMovies(query);
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   function handleSelectMovie(id) {
     setSelectedId(selectedId => (id === selectedId ? null : id));
